@@ -4,8 +4,8 @@ import masks
 
 
 def mask_account_card(masked_data: Union[str]) -> Union[str]:
-    masked_account = masks.get_mask_account(masked_data.split()[-1])
-    masked_number = masks.get_mask_card_number(masked_data.split()[-1])
+    masked_account = str(masks.get_mask_account(masked_data.split()[-1]))
+    masked_number = str(masks.get_mask_card_number(masked_data.split()[-1]))
     if "Счет" in masked_data:
         return "Счет " + masked_account
     elif "Maestro" in masked_data:
