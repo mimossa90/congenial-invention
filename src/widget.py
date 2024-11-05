@@ -1,9 +1,10 @@
 from typing import Union
-
 import masks
+from src.masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(masked_data: Union[str]) -> Union[str]:
+    '''Функция маскировки счета и номера банковской карты'''
     masked_account = str(masks.get_mask_account(masked_data.split()[-1]))
     masked_number = str(masks.get_mask_card_number(masked_data.split()[-1]))
     if "Счет" in masked_data:
@@ -31,6 +32,7 @@ print(mask_account_card("Счет 73654108430135874305"))
 
 
 def get_date(date_format: Union[str]) -> Union[str]:
+    '''Функция преобразования формата даты'''
     return f"{date_format[8:10]}.{date_format[5:7]}.{date_format[0:4]}"
 
 
