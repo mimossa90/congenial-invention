@@ -5,8 +5,8 @@ from src.masks import get_mask_account, get_mask_card_number
 
 def mask_account_card(masked_data: Union[str]) -> Union[str]:
     '''Функция маскировки счета и номера банковской карты'''
-    masked_account = str(masks.get_mask_account(masked_data.split()[-1]))
-    masked_number = str(masks.get_mask_card_number(masked_data.split()[-1]))
+    masked_account = str(get_mask_account(masked_data.split()[-1]))
+    masked_number = str(get_mask_card_number(masked_data.split()[-1]))
     if "Счет" in masked_data:
         return "Счет " + masked_account
     elif "Maestro" in masked_data:
