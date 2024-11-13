@@ -1,7 +1,7 @@
 from typing import Union
 
 
-def get_filter_by_state(list_date: Union[list], state: Union[str]) -> Union[list]:
+def get_filter_by_state(list_date: list, state: str = 'EXECUTED') -> list:
     """функция сортировки по статусу"""
     result = []
     for date in list_date:
@@ -23,7 +23,7 @@ print(
 )
 
 
-def get_sort_by_date(list_date: Union[list], reverse: Union[bool]) -> Union[list]:
+def get_sort_by_date(list_date: Union[list], reverse=True) -> Union[list]:
     """функция сортировки по дате"""
     list_date.sort(key=lambda date: date.get("date"), reverse=reverse)
     return list_date
