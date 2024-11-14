@@ -1,7 +1,7 @@
-from typing import Union
 
 
-def get_filter_by_state(list_date: list, state: str = 'EXECUTED') -> list:
+
+def filter_by_state(list_date: list, state: str="EXECUTED") -> list:
     """функция сортировки по статусу"""
     result = []
     for date in list_date:
@@ -11,7 +11,7 @@ def get_filter_by_state(list_date: list, state: str = 'EXECUTED') -> list:
 
 
 print(
-    get_filter_by_state(
+    filter_by_state(
         [
             {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
             {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
@@ -23,14 +23,14 @@ print(
 )
 
 
-def get_sort_by_date(list_date: Union[list], reverse=True) -> Union[list]:
+def sort_by_date(list_date: list, reverse: bool=True) -> list:
     """функция сортировки по дате"""
     list_date.sort(key=lambda date: date.get("date"), reverse=reverse)
     return list_date
 
 
 print(
-    get_sort_by_date(
+    sort_by_date(
         [
             {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
             {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
