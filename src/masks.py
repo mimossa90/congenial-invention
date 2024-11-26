@@ -13,16 +13,13 @@ def get_mask_card_number(card_number: Union[int, str]) -> Union[str]:
 
 
 mask_card_number = get_mask_card_number("7000792289606361")
-#print(mask_card_number)
+
+
+# print(mask_card_number)
 
 def get_mask_account(account_number: Union[int, str]) -> Union[str]:
     """Функция маскировки номера банковского счета"""
-    divided_data = account_number.split()
-    if len(divided_data) == 2 and divided_data[1].isdigit() and len(divided_data[-1]) == 20:
-        return "**" + divided_data[1][-4:]
-    else:
-        return "Неверный номер счета"
-
+    return "**" + account_number[-4:]
 
 
 mask_account = get_mask_account("Счет 64686473678894779589")
