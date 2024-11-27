@@ -22,9 +22,13 @@ def list_date() -> list:
 
 
 
-@pytest.fixture()
-def date_format() -> str:
-    return "2024-03-11T02:26:18.671407"
+# @pytest.fixture()
+# def date_format() -> str:
+#     return "2024-03-11T02:26:18.671407"
+#
+# # @pytest.fixture()
+# # def invalid_date_format() -> str:
+# #     return "2024|02|31"
 
 
 @pytest.fixture()
