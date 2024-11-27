@@ -1,5 +1,6 @@
 import pytest
 
+
 @pytest.fixture()
 def list_date() -> list:
     return [
@@ -11,14 +12,13 @@ def list_date() -> list:
     ]
 
 
-@pytest.fixture()
-def card_number() -> list[str]:
-    return [
-        '7000 79** **** 6361',
-        'Неверный номер карты'
-        'Введите номер карты'
-    ]
-
+# @pytest.fixture()
+# def card_number() -> str:
+#     return '7000 79** **** 6361'
+#
+# @pytest.fixture()
+# def card_number_invalid() -> str:
+#     return 'Некорректные данные'
 
 
 
@@ -30,5 +30,3 @@ def date_format() -> str:
 @pytest.fixture()
 def masked_data() -> str:
     return 'Maestro 1596 83** **** 5199'
-
-
