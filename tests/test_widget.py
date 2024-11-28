@@ -3,22 +3,28 @@ import pytest
 from src.widget import mask_account_card, get_date
 
 
+def test_get_date(date_format):
+    """Тестируем корректные преобразования дат"""
+    assert get_date(date_format) == "11.03.2024"
+
+
 @pytest.mark.parametrize(
-    "date_format, expected",
+    "invalid_date_format",
     [
-        ('2024-11-26', '26.11.2024'),
-        ('2000-01-01', '01.01.2000'),
-        ('2024-02-29', '29.02.2024'),
-        ("2024|02|31", "Неверный формат данных"),
-        ("2024.02.31", "Неверный формат данных"),
-        ("", "Неверный формат данных"),
-        ("оодлывоавыд", "Неверный формат данных"),
-        ("2024.T.31", "Неверный формат данных")
+        ("2024|02|31T"),
+        ("2024.02.31T"),
+        (""),
+        ("оодлывоавыд"),
+        ("2024.T.31")
     ]
 )
-def test_get_date(date_format, expected):
-    """Тестируем корректные преобразования дат"""
-    assert get_date(date_format) == expected
+
+def test_get_date_invalid(invalid_date_format):
+    """Тестируем некорректные вводные"""
+    with pytest.raises(ValueError) as e:
+        get_date(invalid_date_format)
+    assert str(e.value) == "Неверный формат данных"
+
 
 
 @pytest.mark.parametrize(
@@ -31,36 +37,27 @@ def test_get_date(date_format, expected):
         ("Visa Platinum 1234567890123456", "Visa Platinum 1234 56** **** 3456"),
         ("Visa Gold 1234567890123456", "Visa Gold 1234 56** **** 3456"),
     ])
+
 def test_mask_account_card(data_test, correct_data):
     assert mask_account_card(data_test) == correct_data
 
 
 @pytest.mark.parametrize(
-    "account_card_invalid, expected",
+    "account_card_invalid",
     [
-        ("Счет ", "Неверный тип данных"),
-        ("Maestro ", "Неверный тип данных"),
-        ("", "Неверный тип данных"),
-        ("859438509845", "Неверный тип данных"),
+        ("1596837868705199"),
+        ("Счет 646779589"),
+        ("Mad 71583007758"),
+        ("eddfdf3538556"),
+        ("Vis 68354511321511982476737658"),
+        ("inum"),
+        ("dfgvb465745"),
+        (""),
+    ]
+)
 
-    ])
-def test_mask_account_card_invalid(account_card_invalid, expected):
-    assert mask_account_card(account_card_invalid) == expected
 
-# @pytest.mark.parametrize(
-#     "account_card_invalid",
-#     [
-#         ("1596837868705199"),
-#         ("Счет 646779589"),
-#         ("Mad 71583007758"),
-#         ("eddfdf3538556"),
-#         ("Vis 68354511321511982476737658"),
-#         ("inum"),
-#         ("dfgvb465745"),
-#         (""),
-#     ],
-# )
-# def test_mask_account_card_invalid(account_card_invalid):
-#     """Тест на корректность входных данных."""
-#     with pytest.raises(ValueError):
-#         mask_account_card(account_card_invalid)
+def test_mask_account_card_invalid(account_card_invalid):
+    """Тест на корректность входных данных."""
+    with pytest.raises(ValueError):
+        mask_account_card(account_card_invalid)

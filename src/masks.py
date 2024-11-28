@@ -10,12 +10,12 @@ def get_mask_card_number(card_number: str) -> str:
 mask_card_number = get_mask_card_number("7000792289606361")
 
 
-# print(mask_card_number)
+#print(mask_card_number)
 
 def get_mask_account(account_number: str) -> str:
     """Функция маскировки номера банковского счета"""
 
-    if len(account_number) == 20 and account_number.isdigit():
+    if account_number and len(account_number) == 20 and account_number.isdigit():
         return "**" + account_number[-4:]
     else:
         return "Неверный тип данных"
