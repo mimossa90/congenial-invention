@@ -18,13 +18,11 @@ def test_get_date(date_format):
         ("2024.T.31")
     ]
 )
-
 def test_get_date_invalid(invalid_date_format):
     """Тестируем некорректные вводные"""
     with pytest.raises(ValueError) as e:
         get_date(invalid_date_format)
     assert str(e.value) == "Неверный формат данных"
-
 
 
 @pytest.mark.parametrize(
@@ -37,7 +35,6 @@ def test_get_date_invalid(invalid_date_format):
         ("Visa Platinum 1234567890123456", "Visa Platinum 1234 56** **** 3456"),
         ("Visa Gold 1234567890123456", "Visa Gold 1234 56** **** 3456"),
     ])
-
 def test_mask_account_card(data_test, correct_data):
     assert mask_account_card(data_test) == correct_data
 
@@ -55,8 +52,6 @@ def test_mask_account_card(data_test, correct_data):
         (""),
     ]
 )
-
-
 def test_mask_account_card_invalid(account_card_invalid):
     """Тест на корректность входных данных."""
     with pytest.raises(ValueError):

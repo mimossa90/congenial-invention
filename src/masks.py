@@ -10,7 +10,7 @@ def get_mask_card_number(card_number: str) -> str:
 mask_card_number = get_mask_card_number("7000792289606361")
 
 
-#print(mask_card_number)
+# print(mask_card_number)
 
 def get_mask_account(account_number: str) -> str:
     """Функция маскировки номера банковского счета"""

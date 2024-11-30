@@ -1,7 +1,4 @@
-
-
-
-def filter_by_state(list_date: list, state: str="EXECUTED") -> list:
+def filter_by_state(list_date: list, state: str = "EXECUTED") -> list:
     """функция сортировки по статусу"""
     result = []
     for date in list_date:
@@ -23,7 +20,7 @@ print(
 )
 
 
-def sort_by_date(list_date: list, reverse: bool=True) -> list:
+def sort_by_date(list_date: list, reverse: bool = True) -> list:
     """функция сортировки по дате"""
     list_date.sort(key=lambda date: date.get("date"), reverse=reverse)
     return list_date
