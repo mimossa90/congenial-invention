@@ -3,19 +3,29 @@ import pytest
 from src.widget import mask_account_card, get_date
 
 
-def test_get_date(date_format):
+@pytest.mark.parametrize(
+    "valid_date_format, expected_result",
+    [
+        ("2024-03-11T02:26:18.671407", "11.03.2024"),
+        ("1999-12-31T23:59:59.999999", "31.12.1999"),
+        ("2000-01-01T00:00:00.000000", "01.01.2000"),
+    ]
+)
+def test_get_date(valid_date_format, expected_result):
     """Тестируем корректные преобразования дат"""
-    assert get_date(date_format) == "11.03.2024"
+    assert get_date(valid_date_format) == expected_result
 
 
 @pytest.mark.parametrize(
     "invalid_date_format",
     [
-        ("2024|02|31T"),
-        ("2024.02.31T"),
-        (""),
-        ("оодлывоавыд"),
-        ("2024.T.31")
+        "2024|02|31T",
+        "2024.02.31T",
+        "",
+        "оодлывоавыд",
+        "2024.T.31",
+        "2024-03",  # Некорректный формат
+        "2024-03-11",  # Без времени
     ]
 )
 def test_get_date_invalid(invalid_date_format):
