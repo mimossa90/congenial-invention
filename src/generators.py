@@ -2,9 +2,10 @@
 # словарей, представляющих транзакции.
 # Функция должна возвращать итератор, который поочередно выдает транзакции,
 # где валюта операции соответствует заданной (например, USD).
+from typing import Generator, Union, Dict, List
 
 
-def filter_by_currency(list_data: list[dict], code: str) -> list[dict]:
+def filter_by_currency(list_data: list[dict], code: str) -> Generator[Union[Dict, str], None, None]:
     filtered_result = filter(lambda x: x['operationAmount']['currency']['code'] == code, list_data)
     item = next(filtered_result, None)
     if item is None:
@@ -102,7 +103,7 @@ except StopIteration:
 # Напишите генератор transaction_descriptions, который принимает список словарей с
 # транзакциями и возвращает описание каждой операции по очереди.
 
-def transaction_descriptions(list_data: [list[dict]]):
+def transaction_descriptions(list_data: List[dict]) -> Generator[str]:
     """генератор transaction_descriptions, который принимает список словарей с
        транзакциями и возвращает описание каждой операции по очереди"""
     for data in list_data:
@@ -199,7 +200,7 @@ print(next(descriptions))
 # Генератор должен принимать начальное и конечное значения для генерации диапазона номеров.
 
 
-def card_number_generator(start: int, stop: int) ->str:
+def card_number_generator(start: int, stop: int) -> Generator:
     """Генератор выдает номера банковский карт"""
     for number in range(start, stop + 1):
         # if len(str(number)) <= 16:
