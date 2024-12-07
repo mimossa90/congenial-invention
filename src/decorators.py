@@ -18,7 +18,7 @@ def log(filename: Optional[str] = None) -> Callable:
                     f"Execution time: {time_for_work:.6f} seconds\n"
                 )
                 if filename:
-                    with open(filename, 'a', encoding='utf-8') as file: #
+                    with open(filename, 'a', encoding='utf-8') as file:  #
                         file.write(success_message)
                 else:
                     print(success_message)
@@ -44,7 +44,6 @@ def log(filename: Optional[str] = None) -> Callable:
 def add(x, y):
     return x + y
 
-
 # @log()  # Логи будут выводиться в консоль
 # def multipy(x, y):
 #     if x == 0 or y == 0:
@@ -59,5 +58,3 @@ def add(x, y):
 #     return x + y
 
 # print(add(1, 0))
-
-

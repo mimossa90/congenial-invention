@@ -1,0 +1,16 @@
+'add' ok.
+Execution time: 0.000001 seconds
+'multiply' error: Умножение на ноль.
+Inputs: (1, 0), {}
+'add' ok.
+Execution time: 0.000001 seconds
+'multiply' error: Умножение на ноль.
+Inputs: (1, 0), {}
+'add' ok.
+Execution time: 0.000002 seconds
+'multiply' error: Умножение на ноль.
+Inputs: (1, 0), {}
+'add' ok.
+Execution time: 0.000001 seconds
+'multiply' error: Умножение на ноль.
+Inputs: (1, 0), {}
