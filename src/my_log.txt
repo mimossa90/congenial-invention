@@ -1,0 +1,7 @@
+
+'my_function' ok.
+Execution time: 0.000001 seconds
+'my_function' ok.
+Execution time: 0.000001 seconds
+'add' ok.
+Execution time: 0.000001 seconds
