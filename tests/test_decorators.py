@@ -3,24 +3,24 @@ from src.decorators import log
 
 
 @log()
-def add(x, y): # Логи в консоль
+def add(x, y):  # Логи в консоль
     return x + y
 
 
 @log()
-def multiply(x, y): # Логи в консоль
+def multiply(x, y):  # Логи в консоль
     if x == 0 or y == 0:
         raise ValueError("Умножение на ноль")
     return x * y
 
 
 @log(filename="my_log.txt")
-def add_to_file(x, y): # Логи в файл
+def add_to_file(x, y):  # Логи в файл
     return x + y
 
 
 @log(filename="my_log.txt")
-def multiply_to_file(x, y): # Логи в файл
+def multiply_to_file(x, y):  # Логи в файл
     if x == 0 or y == 0:
         raise ValueError("Умножение на ноль")
     return x * y
